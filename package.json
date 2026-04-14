@@ -1,12 +1,31 @@
 {
   "name": "muscle-memory",
   "version": "0.1.0",
-  "description": "A learning layer for Vercel AI SDK agents.",
+  "description": "Learning and execution cache for Vercel AI SDK agents.",
   "license": "MIT",
   "type": "module",
+  "sideEffects": false,
+  "packageManager": "pnpm@10.17.1",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "homepage": "https://github.com/HoltzTomas/muscle-memory#readme",
+  "bugs": {
+    "url": "https://github.com/HoltzTomas/muscle-memory/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HoltzTomas/muscle-memory.git"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "vercel-ai-sdk",
+    "tool-calling",
+    "embeddings",
+    "automation",
+    "typescript"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -22,27 +41,39 @@
       "types": "./dist/stores/redis.d.ts",
       "import": "./dist/stores/redis.js",
       "require": "./dist/stores/redis.cjs"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "engines": {
     "node": ">=18"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
+    "pack:dry-run": "npm pack --dry-run",
+    "release:check": "pnpm typecheck && pnpm test && pnpm build && npm pack --dry-run",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm typecheck && pnpm test && pnpm build"
   },
   "dependencies": {
-    "ai": "^6.0.159",
     "redis": "^5.8.2",
     "zod": "^4.1.11"
   },
+  "peerDependencies": {
+    "ai": "^6.0.159"
+  },
   "devDependencies": {
     "@types/node": "^24.6.1",
+    "ai": "^6.0.159",
     "tsup": "^8.5.0",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4"

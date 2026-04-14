@@ -8,7 +8,7 @@ export default defineConfig({
   ],
   format: ['esm', 'cjs'],
   dts: true,
-  sourcemap: true,
+  sourcemap: false,
   clean: true,
   target: 'node18',
   splitting: false,
