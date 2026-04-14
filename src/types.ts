@@ -23,7 +23,7 @@ import type {
 
 import type { Store } from './stores/interface'
 
-export type MithrilPhase = 1 | 3
+export type MuscleMemoryPhase = 1 | 3
 
 export interface ThresholdConfig {
   similarity?: number
@@ -38,7 +38,7 @@ export interface GovernanceConfig {
   recentWindowSize?: number
 }
 
-export interface MithrilConfig<TOOLS extends ToolSet = ToolSet> {
+export interface MuscleMemoryConfig<TOOLS extends ToolSet = ToolSet> {
   model: LanguageModel
   extractionModel: LanguageModel
   embeddingModel: EmbeddingModel
@@ -96,7 +96,7 @@ export interface Trace {
   timestamp: string
   success: boolean
   processed: boolean
-  phase: MithrilPhase
+  phase: MuscleMemoryPhase
   templateId: string | null
   fallbackFromTemplateId?: string | null | undefined
   totalLatency: number
@@ -201,7 +201,7 @@ export interface RunResult<TOOLS extends ToolSet = ToolSet> {
       })
     | undefined
   providerMetadata?: ProviderMetadata | undefined
-  phase: MithrilPhase
+  phase: MuscleMemoryPhase
   templateId: string | null
   traceId: string
   latency: number
@@ -266,7 +266,7 @@ export interface InspectInvalidateTemplateOptions {
   reason: string
 }
 
-export interface MithrilEvents<TOOLS extends ToolSet = ToolSet> {
+export interface MuscleMemoryEvents<TOOLS extends ToolSet = ToolSet> {
   'phase1:start': { traceId: string; input: string }
   'phase1:complete': {
     traceId: string
@@ -305,4 +305,4 @@ export interface RunContext<TOOLS extends ToolSet = ToolSet> {
 
 export type MaybePromise<T> = T | Promise<T>
 
-export type MithrilMessage = ModelMessage
+export type MuscleMemoryMessage = ModelMessage

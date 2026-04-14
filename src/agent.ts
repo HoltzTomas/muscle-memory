@@ -13,8 +13,8 @@ import type { AiRuntime } from './runtime'
 import { defaultRuntime } from './runtime'
 import { TraceRecorder } from './trace-recorder'
 import type {
-  MithrilConfig,
-  MithrilEvents,
+  MuscleMemoryConfig,
+  MuscleMemoryEvents,
   NormalizedUsage,
   RunInput,
   RunResult,
@@ -35,16 +35,18 @@ type InternalDependencies = {
   runtime?: AiRuntime
 }
 
-export class MithrilAgent<TOOLS extends ToolSet = ToolSet> extends EventEmitter {
+export class MuscleMemoryAgent<TOOLS extends ToolSet = ToolSet> extends EventEmitter {
   private readonly runtime: AiRuntime
   private readonly governance: GovernanceManager
   private readonly matcher: Matcher
   private readonly extractor: Extractor
   private readonly graphWalker: GraphWalker<TOOLS>
-  private readonly thresholds: Required<NonNullable<MithrilConfig['thresholds']>>
+  private readonly thresholds: Required<
+    NonNullable<MuscleMemoryConfig['thresholds']>
+  >
 
   constructor(
-    private readonly config: MithrilConfig<TOOLS>,
+    private readonly config: MuscleMemoryConfig<TOOLS>,
     dependencies: InternalDependencies = {},
   ) {
     super()
@@ -66,9 +68,9 @@ export class MithrilAgent<TOOLS extends ToolSet = ToolSet> extends EventEmitter 
     this.graphWalker = new GraphWalker(config.tools)
   }
 
-  override on<K extends keyof MithrilEvents<TOOLS>>(
+  override on<K extends keyof MuscleMemoryEvents<TOOLS>>(
     eventName: K,
-    listener: (payload: MithrilEvents<TOOLS>[K]) => void,
+    listener: (payload: MuscleMemoryEvents<TOOLS>[K]) => void,
   ): this
   override on(eventName: string | symbol, listener: (...args: any[]) => void): this {
     return super.on(eventName, listener)

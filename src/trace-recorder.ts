@@ -4,7 +4,12 @@ import type {
   ToolSet,
 } from 'ai'
 
-import type { MithrilPhase, SerializedError, StepSnapshot, Trace } from './types'
+import type {
+  MuscleMemoryPhase,
+  SerializedError,
+  StepSnapshot,
+  Trace,
+} from './types'
 import { createTraceStep, serializeError } from './utils'
 
 export class TraceRecorder<TOOLS extends ToolSet = ToolSet> {
@@ -48,7 +53,7 @@ export class TraceRecorder<TOOLS extends ToolSet = ToolSet> {
     embeddingModel: string
     timestamp: string
     success: boolean
-    phase: MithrilPhase
+    phase: MuscleMemoryPhase
     templateId: string | null
     fallbackFromTemplateId?: string | null | undefined
     totalLatency: number

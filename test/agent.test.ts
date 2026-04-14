@@ -2,12 +2,12 @@ import { tool } from 'ai'
 import { describe, expect, it } from 'vitest'
 import { z } from 'zod'
 
-import { MithrilAgent } from '../src/agent'
+import { MuscleMemoryAgent } from '../src/agent'
 import { learn } from '../src/learner'
 import { MemoryStore } from '../src/stores/memory'
 import { createSupportRuntime, type FakeRuntimeState } from './helpers'
 
-describe('MithrilAgent', () => {
+describe('MuscleMemoryAgent', () => {
   it('learns from repeated phase 1 runs and routes later runs through phase 3', async () => {
     const store = new MemoryStore()
     const orders: Record<
@@ -73,7 +73,7 @@ describe('MithrilAgent', () => {
       objectCalls: 0,
     }
 
-    const agent = new MithrilAgent(
+    const agent = new MuscleMemoryAgent(
       {
         model: 'mock/full-model' as never,
         extractionModel: 'mock/cheap-model' as never,

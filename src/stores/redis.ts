@@ -16,7 +16,7 @@ export class RedisStore implements Store {
 
   constructor(options: RedisStoreOptions) {
     this.client = createClient({ url: options.url })
-    this.keyPrefix = options.keyPrefix ?? 'mithril'
+    this.keyPrefix = options.keyPrefix ?? 'muscle-memory'
   }
 
   async saveTrace(trace: Trace): Promise<void> {

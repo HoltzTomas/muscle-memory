@@ -1,7 +1,7 @@
 import type { Store } from './stores/interface'
 import type {
   GovernanceConfig,
-  MithrilEvents,
+  MuscleMemoryEvents,
   Template,
   TemplateGovernanceState,
 } from './types'
@@ -11,9 +11,9 @@ import {
   getEmbeddingModelIdentity,
 } from './utils'
 
-type EmitFn = <K extends keyof MithrilEvents>(
+type EmitFn = <K extends keyof MuscleMemoryEvents>(
   eventName: K,
-  payload: MithrilEvents[K],
+  payload: MuscleMemoryEvents[K],
 ) => void
 
 export class GovernanceManager {
