@@ -6,7 +6,7 @@ It starts as a normal tool-using agent, records structured traces, learns reusab
 
 ## Status
 
-Muscle Memory is ready for its first public npm release, but this repository has not been published to npm from this machine yet.
+Muscle Memory is published on npm and ready for early adopters who want to experiment with learned tool-execution flows on top of the Vercel AI SDK.
 
 Current scope:
 
@@ -218,40 +218,6 @@ Subpath exports:
 - Fallback from Phase 3 to Phase 1 is implemented, but template governance is still early-stage.
 - Postgres and SQLite stores are not included yet.
 - The package is ready for early adopters, not a fully hardened production platform.
-
-## Publishing
-
-This repository is set up for a manual first publish.
-
-1. Log in to npm:
-
-```bash
-npm login
-```
-
-2. Run the release checks:
-
-```bash
-pnpm release:check
-```
-
-3. Publish the package:
-
-```bash
-npm publish --access public
-```
-
-4. Verify the result:
-
-```bash
-npm view muscle-memory
-```
-
-Then confirm:
-
-- the package page exists at `https://www.npmjs.com/package/muscle-memory`
-- `npm install muscle-memory` resolves correctly
-- the README renders as expected on npm
 
 ## License
 

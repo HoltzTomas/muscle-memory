@@ -1,6 +1,6 @@
 {
   "name": "muscle-memory",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Learning and execution cache for Vercel AI SDK agents.",
   "license": "MIT",
   "type": "module",
